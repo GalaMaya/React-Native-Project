@@ -1,5 +1,10 @@
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import React from "react";
+
+
+const ClickMe = (message) => {
+  Alert.alert('Alert', message, [{ text: 'OK', onPress: () => console.log('OK Pressed') }]);
+}
 
 export default function index() {
   return (
@@ -18,9 +23,15 @@ export default function index() {
           quis laudantium est expedita sequi aperiam saepe neque debitis cumque
           optio deleniti eveniet!
         </Text>
-        <Button title="Click Me" onPress={() => {
-          console.log("Hello World")
-        }} />
+        <Button title="Click Me" onPress={() => ClickMe("Button Click")} />
+        
+        {/* Tombol dengan komponen TouchableOpacity */}
+        <TouchableOpacity 
+          style={Styles.touchableButton} 
+          onPress={() => ClickMe('Tombol TouchableOpacity Ditekan')}
+        >
+          <Text style={Styles.touchableText}>Klik Saya (TouchableOpacity)</Text>
+        </TouchableOpacity>
       </View>
      
 
@@ -75,5 +86,18 @@ const Styles = StyleSheet.create({
   FooterContent : {
     fontSize:15,
     fontWeight:500
-  }
+  },
+
+  touchableButton: {
+    marginTop: 20,
+    backgroundColor: '#4CAF50',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  touchableText: {
+    color: 'white',
+    fontSize: 16,
+  },
+
 })
